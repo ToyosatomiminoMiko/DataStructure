@@ -1,6 +1,6 @@
 /**
  * @file 01.cpp
- * @author ToyosatomiminoMiko
+ * @author ToyosatomiminoMiko (you@domain.com)
  * @brief 链表实现(C++) 节点对象
  * @version 0.1
  * @date 2022-06-23
@@ -114,11 +114,11 @@ void deallocate(Node *node)
 //删除节点
 Node *remove(Node *node, int m)
 {
-    Node *p=node->next;
+    Node *p = node->next;
     if (p->value == m)
     {
         node->next = p->next; // 上一个节点指向下一个节点
-        delete p; //删除节点
+        delete p;             //删除节点
         cout << "Node [" << m << "] removed." << endl;
         return node;
     }
@@ -156,7 +156,7 @@ int main()
     //末端
     node3->next = NULL;
 
-    //cout << "head:" << head << endl;
+    // cout << "head:" << head << endl;
     /*
         // 设置值
         node1->setValue(6);
@@ -173,11 +173,9 @@ int main()
     display(head);
 
     //删除节点
-    remove(head,2);
+    remove(head, 2);
     display(head);
 
     //清除链表
     deallocate(head);
-
-
 }
