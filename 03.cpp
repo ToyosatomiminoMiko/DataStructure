@@ -29,15 +29,15 @@ public:
     // 析构函数没有参数
     ~Node(void)
     {
-        cout << "Node (Object [" << this << "]) "
-             << "内存被释放! value=" << value << endl;
+        cout << "Node (Object [" << this << "]) ";
+        cout << "Memory release! value=" << value << endl;
     }
 
     //改变节点的值
     void setValue(int v)
     {
         value = v;
-        cout << "Node (Object [" << this << "]) value 被设置为:" << value << endl;
+        cout << "Node (Object [" << this << "]) value is set to:" << value << endl;
     }
 };
 
@@ -56,7 +56,7 @@ public:
     ~CircularLinkedList(void)
     {
         cout << "CircularLinkedList (Object [" << this << "]) ";
-        cout << "内存被释放!" << endl;
+        cout << "Memory release!" << endl;
     }
     //添加节点
     void append(int i)
@@ -112,9 +112,14 @@ public:
             if (d->value == i) //如果下一个值为i
             {
                 p->next = d->next; // 上一个节点指向下一个节点
-                // cout << p << "\n" << d << "\n" << p->next->next << "\n"<< p->next << "\n" << endl;
                 delete d;
                 cout << "Node [" << i << "] removed." << endl;
+                break;
+            }
+            else if (d->next == head)
+            {
+                cout << "Remove failed." << endl;
+                cout << "Node [" << i << "] is not found." << endl;
                 break;
             }
         }
@@ -132,7 +137,12 @@ int main()
     CLL0->display();
     CLL0->remove(2);
     CLL0->display();
+    CLL0->remove(9);
+    CLL0->display();
+    CLL0->insert(3, 7);
+    CLL0->display();
     delete CLL0;
+
     return 0;
 }
 
