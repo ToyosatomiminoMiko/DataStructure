@@ -1,5 +1,5 @@
 /**
- * @file 02.cpp
+ * @file l03.cpp
  * @author ToyosatomiminoMiko (you@domain.com)
  * @brief 链表实现(C++) 节点和链表对象
  * @version 0.1
@@ -53,7 +53,7 @@ public:
     }
     ~LinkedList(void)
     {
-        cout << "Link (Object [" << this << "]) ";
+        cout << "LinkedList (Object [" << this << "]) ";
         cout << "内存被释放!" << endl;
     }
     //添加节点
@@ -81,7 +81,7 @@ public:
                 insertnode = new Node(a, NULL); // 指针接收新建的节点
                 insertnode->next = p->next;     // 新节点指向下一个节点
                 p->next = insertnode;           // 上一个节点指向此处
-                cout << "Node [" << i << "] inserted." << endl;
+                cout << "Node [" << a << "] inserted." << endl;
             }
         }
     }
