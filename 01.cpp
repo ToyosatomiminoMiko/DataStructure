@@ -1,7 +1,7 @@
 /**
  * @file 01.cpp
  * @author ToyosatomiminoMiko (you@domain.com)
- * @brief 链表实现(C++) 节点对象
+ * @brief 链表实现(C++) 节点对象 无递归函数
  * @version 0.1
  * @date 2022-06-23
  *
