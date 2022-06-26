@@ -29,15 +29,15 @@ public:
     // 析构函数没有参数
     ~Node(void)
     {
-        cout << "Node (Object [" << this << "]) "
-             << "内存被释放! value=" << value << endl;
+        cout << "Node (Object [" << this << "]) ";
+        cout << "Memory release! value=" << value << endl;
     }
 
     //改变节点的值
     void setValue(int v)
     {
         value = v;
-        cout << "Node (Object [" << this << "]) value 被设置为:" << value << endl;
+        cout << "Node (Object [" << this << "]) value is set to " << value << endl;
     }
 };
 
@@ -46,6 +46,7 @@ class LinkedList
 {
 public:
     Node *head = NULL;
+    Node *foot = NULL;
     //初始化 创建头节点
     LinkedList()
     {
@@ -54,7 +55,7 @@ public:
     ~LinkedList(void)
     {
         cout << "LinkedList (Object [" << this << "]) ";
-        cout << "内存被释放!" << endl;
+        cout << "Memory release!" << endl;
     }
     //添加节点
     void append(int i)
@@ -66,6 +67,7 @@ public:
                 Node *node0 = NULL;
                 node0 = new Node(i, NULL); // 指针接收新建的节点
                 p->next = node0;           // 上一个节点指向此处
+                foot = node0;              //更新尾节点
                 break;
             }
         }
@@ -94,9 +96,14 @@ public:
             if (d->value == i) //如果下一个值为i
             {
                 p->next = d->next; // 上一个节点指向下一个节点
-                // cout << p << "\n" << d << "\n" << p->next->next << "\n"<< p->next << "\n" << endl;
                 delete d;
                 cout << "Node [" << i << "] removed." << endl;
+                break;
+            }
+            else if (d->next == NULL)
+            {
+                cout << "Remove failed." << endl;
+                cout << "Node [" << i << "] is not found." << endl;
                 break;
             }
         }
@@ -111,12 +118,34 @@ public:
         }
         cout << "Null" << endl;
     }
+
+    //反转链表
+    void reverse()
+    {
+        Node *beg = NULL;
+        Node *mid = head;
+        Node *end = head->next;
+        while (1)
+        {
+            mid->next = beg; //反转指针
+            if (end == NULL) //末尾退出
+            {
+                break;
+            }
+            //移动指针
+            beg = mid;
+            mid = end;
+            end = end->next;
+        }
+        head = mid; //末尾反转
+        cout << "LinkedList (Object [" << this << "]) is reversed." << endl;
+    }
 };
 
 int main()
 {
 
-    LinkedList *link1 = NULL;
+    LinkedList *link1 = NULL; //新建链表对象
     link1 = new LinkedList();
     link1->append(1);
     // cout << ((link1->head)->next == NULL) << endl;
@@ -127,6 +156,12 @@ int main()
     link1->display();
     link1->remove(1);
     link1->display();
+
+    link1->reverse();
+    link1->display();
+    link1->insert(0, 1);
+    link1->display();
+    link1->remove(9);
     delete link1;
 
     return 0;
