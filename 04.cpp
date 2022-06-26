@@ -34,14 +34,14 @@ public:
     ~DoublyNode(void)
     {
         cout << "DoublyNode (Object [" << this << "]) ";
-        cout << "memory release! value=" << value << endl;
+        cout << "Memory release! value=" << value << endl;
     }
 
     //改变节点的值
     void setValue(int v)
     {
         value = v;
-        cout << "DoublyNode (Object [" << this << "]) value 被设置为:" << value << endl;
+        cout << "DoublyNode (Object [" << this << "]) value is set to:" << value << endl;
     }
 };
 
@@ -59,7 +59,7 @@ public:
     ~DoublyLinkedList(void)
     {
         cout << "LinkedList (Object [" << this << "]) ";
-        cout << "memory release!" << endl;
+        cout << "Memory release!" << endl;
     }
     //添加节点
     void append(int i)
@@ -72,7 +72,7 @@ public:
                 node0 = new DoublyNode(i, NULL, NULL); // 指针接收新建的节点
                 p->next = node0;                       // 上一个节点指向此处
                 node0->prev = p;                       // 此处指向上一个节点
-                foot = node0;
+                foot = node0;                          //更新尾节点
                 break;
             }
         }
@@ -102,15 +102,21 @@ public:
     {
         for (DoublyNode *p = head->next; p != NULL; p = p->next) //当p不为空时
         {
-            if (p->value == i) //如果下一个值为空
+            if (p->value == i)
             {
-                DoublyNode *insertnode = NULL;        // 准备指针
-                insertnode = new DoublyNode(a, NULL,NULL); // 指针接收新建的节点
-                insertnode->next = p->next;     // 新节点指向下一个节点
-                p->next->prev=insertnode;
-                insertnode->prev=p;
-                p->next = insertnode;           // 上一个节点指向此处
+                DoublyNode *insertnode = NULL;              // 准备指针
+                insertnode = new DoublyNode(a, NULL, NULL); // 指针接收新建的节点
+                insertnode->next = p->next;                 // 新节点指向下一个节点
+                p->next->prev = insertnode;
+                insertnode->prev = p;
+                p->next = insertnode; // 上一个节点指向此处
                 cout << "Node [" << a << "] inserted." << endl;
+                break;
+            }
+            else
+            {
+                cout << "Insert failed." << endl;
+                cout << "Node [" << a << "] is not found." << endl;
                 break;
             }
         }
@@ -123,10 +129,16 @@ public:
             DoublyNode *d = p->next;
             if (d->value == i) //如果下一个值为i
             {
-                d->next->prev=p;
+                d->next->prev = p;
                 p->next = d->next; // 上一个节点指向下一个节点
                 delete d;
                 cout << "Node [" << i << "] removed." << endl;
+                break;
+            }
+            else if (d->next == NULL)
+            {
+                cout << "remove failed." << endl;
+                cout << "Node [" << i << "] is not found." << endl;
                 break;
             }
         }
@@ -140,8 +152,12 @@ int main()
     DLL0->append(2);
     DLL0->append(3);
     DLL0->re_display();
-    DLL0->insert(2,4);
+    DLL0->insert(2, 4);
     DLL0->remove(2);
+    DLL0->display();
+    DLL0->remove(9);
+    DLL0->display();
+    DLL0->insert(3, 7);
     DLL0->display();
     delete DLL0;
     return 0;
