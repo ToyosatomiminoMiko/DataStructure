@@ -4,6 +4,6 @@
 
 #### 单链表 Linked list
 #### 循环链表 Circular linked list
-#### 双向链表 
+#### 双向链表 Doubly linked list
 
 
