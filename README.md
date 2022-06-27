@@ -1,6 +1,6 @@
-# LinkedList
-链表:
-### 支持增删改查操作
+# DataStructure
+## LinkedList
+##### 支持增删改查操作
 
 #### 单链表 Linked list
 创建链表
