@@ -4,9 +4,6 @@
  * @brief 链表实现(C++) 节点对象 无递归函数
  * @version 0.1
  * @date 2022-06-23
- *
- * @copyright Copyright (c) 2022
- *
  */
 
 #include <iostream>
