@@ -54,7 +54,7 @@ void search(Node *node, int x) // node 待查找链表 x目标值
 }
 
 //插入 node 待查找链表 a目标插入点 i待插入值
-Node *insert(Node *node, int a, int i)
+void *insert(Node *node, int a, int i)
 {
     if (node->value == a)
     {
@@ -109,7 +109,7 @@ void deallocate(Node *node)
     Node *p = NULL;
 }
 //删除节点
-Node *remove(Node *node, int m)
+void *remove(Node *node, int m)
 {
     Node *p = node->next;
     if (p->value == m)
