@@ -22,20 +22,20 @@ public:
     Node(int v, Node *next)
     {
         value = v;
-        cout << "Node (object [" << this << "]) 初始化 value=" << value << endl;
+        cout << "Node (object [" << this << "]) 初始化 value=" << this->value << endl;
     }
     // 析构函数没有参数
     ~Node(void)
     {
         cout << "Node (Object [" << this << "]) ";
-        cout << "Memory release! value=" << value << endl;
+        cout << "Memory release! value=" << this->value << endl;
     }
 
     //改变节点的值
     void setValue(int v)
     {
         value = v;
-        cout << "Node (Object [" << this << "]) value is set to " << value << endl;
+        cout << "Node (Object [" << this << "]) value is set to " << this->value << endl;
     }
 };
 
