@@ -10,7 +10,7 @@
  */
 #include <iostream>
 using namespace std;
-#include "stacklib.h"
+// #include "stacklib.h"
 
 void all_display(Stack *a,Stack *b,Stack *c){
     a->display();
