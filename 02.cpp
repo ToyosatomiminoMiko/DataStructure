@@ -13,10 +13,11 @@ using namespace std;
 //每个节点都是对象
 class Node
 {
+private:
+
 public:
     int value;
     Node *next;
-
     // 构造函数
     Node(int v, Node *next)
     {
